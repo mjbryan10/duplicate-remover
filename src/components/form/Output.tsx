@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Output = ({ output }: Props) => {
-   const [isCopied, setIsCopied] = useState(false);
+   // const [isCopied, setIsCopied] = useState(false);
    return (
       <div className="output-container">
          <textarea
