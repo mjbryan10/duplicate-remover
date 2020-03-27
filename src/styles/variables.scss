@@ -1,0 +1,25 @@
+/**
+* COLORS
+*/
+$primaryColor: #0a74fd;
+$secondaryColor: #61dafb;
+$bgColor: #282c34;
+
+/**
+* FONT
+*/
+@font-face {
+   font-family: 'Quicksand';
+   src: url('Quicksand-VariableFont_wght.ttf')
+}
+// $fontSize: calc(10px + 2vmin);
+$fontSize: 16px;
+$fontColor: white;
+$fontPrimary: Quicksand;
+// -webkit-font-smoothing: antialiased;
+// -moz-osx-font-smoothing: grayscale;
+
+/**
+* DESIGN
+*/
+$borRad: 3px;
