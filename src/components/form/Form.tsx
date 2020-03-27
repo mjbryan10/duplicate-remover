@@ -18,12 +18,21 @@ export const Form: FunctionComponent<Props> = ({ onSubmit }) => {
       // let strArray = Array.from(new Set(input.split(actionToSplitCommand(optionType)))); // Removes duplicates
       onSubmit(input);
    };
-   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+   const handleChange = (
+      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+   ) => {
       setInput(event.target.value);
-   }
+   };
    return (
       <form className="Form" action="submit" onSubmit={handleSubmit}>
-         <textarea name="email_input" id="email_input" cols={30} rows={5} onChange={handleChange} placeholder={"Place your list here, in your chosen format"} ></textarea>
+         <textarea
+            name="email_input"
+            id="email_input"
+            cols={30}
+            rows={5}
+            onChange={handleChange}
+            placeholder={"Place your list here, in your chosen format"}
+         ></textarea>
          <input type="submit" value="Filter" />
       </form>
    );

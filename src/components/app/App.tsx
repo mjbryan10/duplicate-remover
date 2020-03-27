@@ -20,7 +20,7 @@ function App() {
       if (action === "return") return "\n";
       if (action === "comma") return ",";
       if (action === "space") return " ";
-      return "\n";
+      else return "\n";
    };
    const onSubmit = (inputString: string) => {
       let errorReport = {
@@ -30,11 +30,13 @@ function App() {
       if (!selectedOptions.input) errorReport.input = "Please choose one..";
       if (!selectedOptions.output) errorReport.output = "Please choose one.."
       if (selectedOptions.input.length && selectedOptions.output.length) {
+         
          let inputCommand = actionToSplitCommand(selectedOptions.input);
          let outputCommand = actionToSplitCommand(selectedOptions.output);
          let strArray = Array.from(new Set(inputString.split(inputCommand)));
          // Removes duplicates
          let output = strArray.join(outputCommand);
+         console.log("onSubmit -> output", output);
          setOutputString(output);
       } else {
          setError(errorReport);

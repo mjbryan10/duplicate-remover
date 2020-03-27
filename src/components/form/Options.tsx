@@ -17,8 +17,18 @@ function Options({ options, optionId, onChange }: Props) {
    const capitalizeFirstLetter = (string: string): string => {
       return string.charAt(0).toUpperCase() + string.slice(1);
    } 
+   // const typeToSymbol = (type:string):string => {
+   //    switch (type) {
+   //       case "return":
+   //          return "	&#9166;"
+   //       case   
+      
+   //       default:
+   //          break;
+   //    }
+   // }
    return (
-      <div>
+      <div className="option-list">
          {/* <select onChange={handleChange}>
             {options.map((option: string, index: number) => (
                <option key={index} value={option}>
