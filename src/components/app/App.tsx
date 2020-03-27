@@ -6,26 +6,27 @@ import { Output } from "../form/Output";
 import Options from "../form/Options";
 
 function App() {
-   const options = ["return", "comma", "space"];
+   const options = ["return", "comma", "comma + space", "space"]; //Added for usability
    const [outputString, setOutputString] = useState("");
    const [selectedOptions, setSelectedOptions] = useState({
       input: "",
       output: "",
    });
    const [error, setError] = useState({
-      input: "",
-      output: "",
+      input: "space",
+      output: "space",
    });
    const actionToSplitCommand = (action: string): string => {
       if (action === "return") return "\n";
       if (action === "comma") return ",";
       if (action === "space") return " ";
+      if(action === "comma + space") return ", " //Added for usability
       else return "\n";
    };
    const onSubmit = (inputString: string) => {
       let errorReport = {
-         input: "",
-         output: ""
+         input: "space",
+         output: "space"
       };
       if (!selectedOptions.input) errorReport.input = "Please choose one..";
       if (!selectedOptions.output) errorReport.output = "Please choose one.."
@@ -49,10 +50,10 @@ function App() {
    return (
       <div className="App">
          <Header />
-         <Options options={options} optionId="input" onChange={onRadioChange} />
+         <Options options={options} optionId="input" onChange={onRadioChange} selectedOption={selectedOptions.input} />
          {error.input.length ? <p>{error.input}</p> : null}
-         <Form onSubmit={onSubmit} />
-         <Options options={options} optionId="output" onChange={onRadioChange} />
+         <Form onSubmit={onSubmit} joinCommand={actionToSplitCommand(selectedOptions.input)} />
+         <Options options={options} optionId="output" onChange={onRadioChange} selectedOption={selectedOptions.output} />
          {error.output.length ? <p>{error.output}</p> : null}
          <Output output={outputString} />
       </div>

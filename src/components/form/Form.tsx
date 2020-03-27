@@ -2,17 +2,12 @@ import React, { SyntheticEvent, FunctionComponent, useState } from "react";
 
 interface Props {
    onSubmit: any;
-   // optionType: string;
+   joinCommand: string;
 }
 
-export const Form: FunctionComponent<Props> = ({ onSubmit }) => {
+export const Form: FunctionComponent<Props> = ({ onSubmit, joinCommand }) => {
    const [input, setInput] = useState("");
-   // const actionToSplitCommand = (action: string): string => {
-   //    if (action === "return") return "\n";
-   //    if (action === "comma") return ",";
-   //    if (action === "space") return " ";
-   //    return "\n";
-   // };
+   const [example, setExample] = useState("")
    const handleSubmit = (event: SyntheticEvent) => {
       event.preventDefault();
       // let strArray = Array.from(new Set(input.split(actionToSplitCommand(optionType)))); // Removes duplicates
@@ -22,6 +17,8 @@ export const Form: FunctionComponent<Props> = ({ onSubmit }) => {
       event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
    ) => {
       setInput(event.target.value);
+      let exampleArr = ["A","list","like","this"];
+      setExample(exampleArr.join(joinCommand));
    };
    return (
       <form className="Form" action="submit" onSubmit={handleSubmit}>
@@ -31,7 +28,7 @@ export const Form: FunctionComponent<Props> = ({ onSubmit }) => {
             cols={30}
             rows={5}
             onChange={handleChange}
-            placeholder={"Place your list here, in your chosen format"}
+            placeholder={"Place your list here. E.g." + example}
          ></textarea>
          <input type="submit" value="Filter" />
       </form>

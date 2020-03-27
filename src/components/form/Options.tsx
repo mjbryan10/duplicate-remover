@@ -4,29 +4,17 @@ interface Props {
    options: string[];
    optionId: string;
    onChange: any;
+   selectedOption: string;
 }
 
 
-function Options({ options, optionId, onChange }: Props) {
-   // const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-   //    onChange(optionId, event.target.value);
-   // };
+function Options({ options, optionId, onChange, selectedOption }: Props) {
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       onChange(optionId, event.currentTarget.value);
    };
    const capitalizeFirstLetter = (string: string): string => {
       return string.charAt(0).toUpperCase() + string.slice(1);
    } 
-   // const typeToSymbol = (type:string):string => {
-   //    switch (type) {
-   //       case "return":
-   //          return "	&#9166;"
-   //       case   
-      
-   //       default:
-   //          break;
-   //    }
-   // }
    return (
       <div className="option-list">
          {/* <select onChange={handleChange}>
@@ -46,6 +34,7 @@ function Options({ options, optionId, onChange }: Props) {
                   value={option}
                   name={optionId}
                   onChange={handleChange}
+                  checked={selectedOption === option}
                />
             </span>
          ))}
