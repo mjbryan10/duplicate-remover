@@ -9,24 +9,24 @@ function App() {
    const options = ["return", "comma", "comma + space", "space"]; //Added for usability
    const [outputString, setOutputString] = useState("");
    const [selectedOptions, setSelectedOptions] = useState({
-      input: "",
-      output: "",
-   });
-   const [error, setError] = useState({
       input: "space",
       output: "space",
+   });
+   const [error, setError] = useState({
+      input: "",
+      output: "",
    });
    const actionToSplitCommand = (action: string): string => {
       if (action === "return") return "\n";
       if (action === "comma") return ",";
       if (action === "space") return " ";
-      if(action === "comma + space") return ", " //Added for usability
+      if(action === "comma + space") return ", "
       else return "\n";
    };
    const onSubmit = (inputString: string) => {
       let errorReport = {
-         input: "space",
-         output: "space"
+         input: "",
+         output: ""
       };
       if (!selectedOptions.input) errorReport.input = "Please choose one..";
       if (!selectedOptions.output) errorReport.output = "Please choose one.."
@@ -37,7 +37,6 @@ function App() {
          let strArray = Array.from(new Set(inputString.split(inputCommand)));
          // Removes duplicates
          let output = strArray.join(outputCommand);
-         console.log("onSubmit -> output", output);
          setOutputString(output);
       } else {
          setError(errorReport);
