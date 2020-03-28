@@ -10,7 +10,6 @@ export const Form: FunctionComponent<Props> = ({ onSubmit, joinCommand }) => {
    const exampleArr = ["A","list","like","this"];
    const handleSubmit = (event: SyntheticEvent) => {
       event.preventDefault();
-      // let strArray = Array.from(new Set(input.split(actionToSplitCommand(optionType)))); // Removes duplicates
       onSubmit(input);
    };
    const handleChange = (
