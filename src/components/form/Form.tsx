@@ -7,7 +7,7 @@ interface Props {
 
 export const Form: FunctionComponent<Props> = ({ onSubmit, joinCommand }) => {
    const [input, setInput] = useState("");
-   const [example, setExample] = useState("")
+   const exampleArr = ["A","list","like","this"];
    const handleSubmit = (event: SyntheticEvent) => {
       event.preventDefault();
       // let strArray = Array.from(new Set(input.split(actionToSplitCommand(optionType)))); // Removes duplicates
@@ -17,8 +17,6 @@ export const Form: FunctionComponent<Props> = ({ onSubmit, joinCommand }) => {
       event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
    ) => {
       setInput(event.target.value);
-      let exampleArr = ["A","list","like","this"];
-      setExample(exampleArr.join(joinCommand));
    };
    return (
       <form className="Form" action="submit" onSubmit={handleSubmit}>
@@ -28,7 +26,7 @@ export const Form: FunctionComponent<Props> = ({ onSubmit, joinCommand }) => {
             cols={30}
             rows={5}
             onChange={handleChange}
-            placeholder={"Place your list here. E.g." + example}
+            placeholder={"Place your list here. E.g. \n" + exampleArr.join(joinCommand)}
          ></textarea>
          <input type="submit" value="Filter" />
       </form>
